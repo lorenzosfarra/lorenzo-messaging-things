@@ -1,12 +1,12 @@
 import ServerConfig from './config';
-import {createServer} from "net";
+import {createServer, Socket} from "net";
 import ChatServer from "./ChatServer";
 
 /**
  * The real chat server
  */
 const chatServer = new ChatServer();
-const httpServer = createServer(socket => {
+const httpServer = createServer((socket: Socket) => {
     chatServer.onClientConnected(socket);
 });
 
